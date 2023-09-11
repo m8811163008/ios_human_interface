@@ -7,15 +7,17 @@ abstract class AppThemeData {
 final class LightModeAppThemeData implements AppThemeData {
   @override
   CupertinoThemeData get cupertinoThemeData => const CupertinoThemeData(
-        brightness: Brightness.light,
-        scaffoldBackgroundColor: CupertinoColors.lightBackgroundGray,
-      );
+      brightness: Brightness.light,
+      scaffoldBackgroundColor: CupertinoColors.lightBackgroundGray,
+      textTheme: CupertinoTextThemeData(
+          textStyle: TextStyle(color: CupertinoColors.activeBlue)));
 }
 
 final class DarkModeAppThemeData implements AppThemeData {
   @override
   CupertinoThemeData get cupertinoThemeData => const CupertinoThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: CupertinoColors.darkBackgroundGray,
-      );
+      brightness: Brightness.dark,
+      scaffoldBackgroundColor: CupertinoColors.darkBackgroundGray,
+      textTheme: CupertinoTextThemeData(
+          textStyle: TextStyle(color: CupertinoColors.activeOrange)));
 }

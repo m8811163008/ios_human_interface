@@ -16,11 +16,15 @@ List<Story> get stories {
             children: [
               TextSpan(
                 text: l10n.introPageWellcomeMessage,
+                style: context.textStyle,
               ),
               const TextSpan(text: '\n'),
               TextSpan(
                 text: l10n.projectName,
-                style: context.textStyle.copyWith(fontWeight: FontWeight.w700),
+                // style: context.textStyle.copyWith(
+                //   fontWeight: FontWeight.w700,
+                //   color: context.textStyle.color,
+                // ),
               ),
             ],
           ),

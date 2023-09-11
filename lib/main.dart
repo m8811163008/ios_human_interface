@@ -27,61 +27,57 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return AppTheme(
-      lightTheme: _lightTheme,
-      darkTheme: _darkTheme,
-      child: Storybook(
-        stories: stories,
-        initialStory: StoriesRoutesNames.wellcome,
-        wrapperBuilder: _wrapperBuilder,
-        plugins: [
-          ThemeModePlugin(
-            initialTheme: ThemeMode.light,
-            onThemeChanged: (value) {
-              late Brightness brighness;
-              switch (value) {
-                case ThemeMode.system:
-                  brighness = MediaQuery.platformBrightnessOf(context);
-                  break;
-                case ThemeMode.light:
-                  brighness = Brightness.light;
-                  break;
-                case ThemeMode.dark:
-                  brighness = Brightness.dark;
-                  break;
-              }
-              _themeRepository.updateAppThemeBrightness(brighness);
-            },
-          ),
-          Plugin(
-            icon: (_) => AnimatedCrossFade(
-              firstChild: AnimatedStopIcon(
-                isAnimating: _screenRecordStatus.isRecording,
-              ),
-              secondChild: const Icon(
-                CupertinoIcons.circle_fill,
-              ),
-              duration: const Duration(milliseconds: 500),
-              crossFadeState: _screenRecordStatus.isRecording
-                  ? CrossFadeState.showFirst
-                  : CrossFadeState.showSecond,
+    return Storybook(
+      stories: stories,
+      initialStory: StoriesRoutesNames.wellcome,
+      wrapperBuilder: _wrapperBuilder,
+      plugins: [
+        ThemeModePlugin(
+          initialTheme: ThemeMode.light,
+          onThemeChanged: (value) {
+            late Brightness brighness;
+            switch (value) {
+              case ThemeMode.system:
+                brighness = MediaQuery.platformBrightnessOf(context);
+                break;
+              case ThemeMode.light:
+                brighness = Brightness.light;
+                break;
+              case ThemeMode.dark:
+                brighness = Brightness.dark;
+                break;
+            }
+            _themeRepository.updateAppThemeBrightness(brighness);
+          },
+        ),
+        Plugin(
+          icon: (_) => AnimatedCrossFade(
+            firstChild: AnimatedStopIcon(
+              isAnimating: _screenRecordStatus.isRecording,
             ),
-            onPressed: (context) {
-              if (_screenRecordStatus.isRecording) {
-                AppScreenRecorder.stopRecord();
-              } else {
-                final fileName = DateTime.now().toIso8601String();
-                AppScreenRecorder.startRecorde(fileName);
-              }
-              setState(() {
-                _screenRecordStatus = _screenRecordStatus.isRecording
-                    ? ScreenRecordStatus.stop
-                    : ScreenRecordStatus.record;
-              });
-            },
+            secondChild: const Icon(
+              CupertinoIcons.circle_fill,
+            ),
+            duration: const Duration(milliseconds: 500),
+            crossFadeState: _screenRecordStatus.isRecording
+                ? CrossFadeState.showFirst
+                : CrossFadeState.showSecond,
           ),
-        ],
-      ),
+          onPressed: (context) {
+            if (_screenRecordStatus.isRecording) {
+              AppScreenRecorder.stopRecord();
+            } else {
+              final fileName = DateTime.now().toIso8601String();
+              AppScreenRecorder.startRecorde(fileName);
+            }
+            setState(() {
+              _screenRecordStatus = _screenRecordStatus.isRecording
+                  ? ScreenRecordStatus.stop
+                  : ScreenRecordStatus.record;
+            });
+          },
+        ),
+      ],
     );
   }
 
@@ -92,21 +88,22 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
         if (snapshot.hasData) {
           final theme =
               snapshot.data == Brightness.light ? _lightTheme : _darkTheme;
-          return CupertinoApp(
-            home: CupertinoPageScaffold(
-              child: Center(
-                child: Builder(
-                  builder: (context) {
-                    return child!;
-                  },
+          return AppTheme(
+            lightTheme: _lightTheme,
+            darkTheme: _darkTheme,
+            brightness: theme.cupertinoThemeData.brightness!,
+            child: CupertinoApp(
+              home: CupertinoPageScaffold(
+                child: Center(
+                  child: child!,
                 ),
               ),
+              theme: theme.cupertinoThemeData,
+              localizationsDelegates:
+                  IosHumanInterfaceLocalizations.localizationsDelegates,
+              supportedLocales: IosHumanInterfaceLocalizations.supportedLocales,
+              debugShowCheckedModeBanner: false,
             ),
-            theme: theme.cupertinoThemeData,
-            localizationsDelegates:
-                IosHumanInterfaceLocalizations.localizationsDelegates,
-            supportedLocales: IosHumanInterfaceLocalizations.supportedLocales,
-            debugShowCheckedModeBanner: false,
           );
         }
         return const CenteredActivityIndicator();
