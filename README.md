@@ -10,5 +10,5 @@ I used and customize system-defined components of iOS to give people a familiar 
   
 </p>
 
-<video src="https://github.com/m8811163008/ios_human_interface/raw/main/assets/video.mp4" controls="controls" style="max-width: 730px;">
+<video src="assets/video.mp4" controls="controls" style="max-width: 730px;">
 </video>
