@@ -13,12 +13,15 @@ I used and customize system-defined components of iOS build by Flutter to give p
 An image view displays a single image.
 Within an image view, you can stretch, scale, size to fit, or pin the image to a specific location.
 <p float="left">
-  <img src="assets/image_view_page.gif" alt="intro page screenshot" width="200" />
-  <div>
-  <p>Fig 4</p>
+  <figure>
+    <img src="assets/image_view_page.gif" alt="intro page screenshot" width="200" />
+    <figcaption>Fig 4 text legibility.</figcaption>
+</figure>
+ 
+
   <img src="assets/image_view_legibility.gif" alt="intro page screenshot" width="200" />
-  </div>
+
 </p>
-<b>Take care when overlaying text on images.</b> Compositing text on top of images can decrease both the clarity of the image and the legibility of the text. To help improve the results, I've added a opaque background layer.(Fig 4)
+<b>Take care when overlaying text on images.</b> Compositing text on top of images can decrease both the clarity of the image and the legibility of the text. To help improve the results, I've added an opaque background layer. (Fig 4)
 
  
