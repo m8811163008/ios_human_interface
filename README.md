@@ -9,8 +9,6 @@ I used and customize system-defined components of iOS to give people a familiar 
 
   <video src="https://github.com/m8811163008/ios_human_interface/raw/main/assets/video.mp4" controls="controls" width=180/></video>
 </p>
-0
-<video src="[https://github.com/m8811163008/ios_human_interface/raw/main/assets/video.mp4](https://github.com/m8811163008/ios_human_interface/raw/main/assets/video.mp4)](https://github.com/m8811163008/ios_human_interface/raw/main/assets/video.mp4)" controls="controls" width=180/></video>
-https://github.com/m8811163008/ios_human_interface/raw/main/assets/video.mp4
+
 <video src="https://github.com/m8811163008/ios_human_interface/raw/main/assets/video.mp4" controls="controls" style="max-width: 730px;">
 </video>
