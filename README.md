@@ -10,4 +10,8 @@ I used and customize system-defined components of iOS to give people a familiar 
   <video src="assets/video.mp4" controls="controls" width=180/></video>
 </p>
 
-  <video src="assets/video.mp4" controls="controls" width=180/></video>
+  <video src="assets/video.mp4" controls="controls" style="max-width: 730px;" /></video>
+0
+  <video src="assets/video.mp4" controls="controls" style="max-width: 730px;"></video>
+  1
+  <video src="assets/video.mp4" controls="controls" style="max-width: 730px;"/>
