@@ -7,5 +7,7 @@ I used and customize system-defined components of iOS to give people a familiar 
 <p float="left">
   <img src="assets/flutter_01.png" alt="intro page screenshot" width="100" />
 
+  <video src="assets/video.mp4" controls="controls" width=180/></video>
 </p>
-  <video src='assets/video.mp4' width=180/>
+
+  <video src="assets/video.mp4" controls="controls" width=180/></video>
