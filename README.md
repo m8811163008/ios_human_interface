@@ -11,5 +11,7 @@ I used and customize system-defined components of iOS to give people a familiar 
 
 https://github.com/m8811163008/ios_human_interface/assets/20933055/25390638-5d9f-441d-b757-ed0e44fede80
 
+https://github.com/m8811163008/ios_human_interface/blob/main/assets/video.mp4
 
+https://github.com/m8811163008/ios_human_interface/raw/main/assets/video.mp4
 </p>
