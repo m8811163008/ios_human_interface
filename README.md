@@ -8,7 +8,8 @@ I used and customize system-defined components of iOS to give people a familiar 
   <img src="assets/flutter_01.png" alt="intro page screenshot" width="100" />
 
   
-</p>
 
-<video src="assets/video.mp4" controls="controls" style="max-width: 730px;">
-</video>
+https://github.com/m8811163008/ios_human_interface/assets/20933055/25390638-5d9f-441d-b757-ed0e44fede80
+
+
+</p>
