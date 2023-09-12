@@ -7,12 +7,5 @@ I used and customize system-defined components of iOS to give people a familiar 
 <p float="left">
   <img src="assets/flutter_01.png" alt="intro page screenshot" width="100" />
 
-  
-
-
-
 </p>
-
-
-<video src='https://github.com/m8811163008/ios_human_interface/raw/main/assets/video.mp4'></video>
-
+  <video src='assets/video.mp4' width=180/>
