@@ -19,3 +19,4 @@ Within an image view, you can stretch, scale, size to fit, or pin the image to a
 <p float="left">
   <img src="assets/image_view_legibility.gif" alt="intro page screenshot" width="200" />
 </p>
+ 
