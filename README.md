@@ -4,10 +4,11 @@ A Flutter project to showcase ios widgets developed by Flutter.
 
 ## Introduction
 I used and customize system-defined components of iOS build by Flutter to give people a familiar and consistent experience.
-<p float="left">
-  <img src="assets/flutter_01.png" alt="intro page screenshot" width="200" />
-  <img src="assets/intro_page.gif" alt="intro page screenshot" width="200" />
-</p>
+
+| intro page screenshot               | intro page                            |
+| ----------------------------------- | ----------------------------------- |
+| ![intro page screenshot](assets/flutter_01.png) | ![intro page](assets/intro_page.gif) |
+
 
 ## Image View
 An image view displays a single image.
