@@ -13,14 +13,14 @@ I used and customize system-defined components of iOS build by Flutter to give p
 An image view displays a single image.
 Within an image view, you can stretch, scale, size to fit, or pin the image to a specific location.
 <p float="left">
-     <figure width="200">
-      <img src="assets/image_view_legibility.gif" alt="intro page screenshot"  />
+     <figure>
+      <img src="assets/image_view_legibility.gif" alt="intro page screenshot"   width="200"/>
     <figcaption>Fig 4 text legibility.</figcaption>
 </figure>
-  <figure width="200">
-    <img src="assets/image_view_page.gif" alt="intro page screenshot" />
+
+    <img src="assets/image_view_page.gif" alt="intro page screenshot"  width="200"/>
     <figcaption>Fig 4 text legibility.</figcaption>
-</figure>
+
 
 
 
