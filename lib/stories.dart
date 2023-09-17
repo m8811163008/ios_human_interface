@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ios_human_interface/cubit/app_cubit.dart';
+import 'package:lorem_ipsum/lorem_ipsum.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
+import 'package:flutter_native_text_view/flutter_native_text_view.dart';
 
 import 'package:ios_human_interface/l10n/ios_human_interface_localizations.dart';
 
@@ -28,6 +30,13 @@ List<Story> get stories {
             initial: false,
           ),
         );
+      },
+    ),
+    Story(
+      name: '${StoriesRoutesNames.content}/${StoriesRoutesNames.textView}',
+      builder: (context) {
+        context.read<AppCubit>().updateAppbarTitle(StoriesRoutesNames.textView);
+        return TextView();
       },
     ),
   ];
@@ -188,8 +197,35 @@ class _ImageViewState extends State<ImageView>
   }
 }
 
+class TextView extends StatelessWidget {
+  const TextView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    String exampleText = '👍 consectetur sampel text component ios ☺️👍';
+    exampleText += loremIpsum(words: 600, paragraphs: 5);
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: SizedBox(
+        height: 200,
+        child: CupertinoScrollbar(
+          child: SingleChildScrollView(
+            child: NativeTextView(
+              exampleText,
+              style: TextStyle(
+                color: CupertinoColors.label,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class StoriesRoutesNames {
   static const wellcome = 'wellcome';
   static const content = 'content';
   static const imageView = 'image-view';
+  static const textView = 'text-view';
 }

@@ -130,6 +130,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_native_text_view:
+    dependency: "direct main"
+    description:
+      name: flutter_native_text_view
+      sha256: aba4530273316a49f0bd10f56a1aff09bc1111f8285f16ccad7f222a429596b5
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.1"
   flutter_screen_recording:
     dependency: transitive
     description:
@@ -204,6 +212,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  lorem_ipsum:
+    dependency: "direct main"
+    description:
+      name: lorem_ipsum
+      sha256: b018535db8525a45bbcd7a44e151480e2618e2111c5305725e3713ce7c6ba677
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
   matcher:
     dependency: transitive
     description:
