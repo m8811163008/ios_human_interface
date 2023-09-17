@@ -30,6 +30,6 @@ Text views can be any height and allow scrolling when the content extends outsid
 
 <b>Make useful text selectable. </b> If a text view contains useful information such as an error message, a serial number, or an IP address, consider letting people select and copy it for pasting elsewhere.
 <p float="left">
-  <img src="assets/text_view/flutter_03.png" alt="select text to search" width="200" />
+  <img src="assets/text_view/flutter_02.png" alt="select text to search" width="200" />
      <img src="assets/text_view/flutter_03.png" alt="show browser" width="200" />
 </p>
