@@ -33,3 +33,13 @@ Text views can be any height and allow scrolling when the content extends outsid
   <img src="assets/text_view/flutter_02.png" alt="select text to search" width="200" />
      <img src="assets/text_view/flutter_03.png" alt="show browser" width="200" />
 </p>
+## Web View
+A web view loads and displays rich web content, such as embedded HTML and websites, directly within the app.
+This widget has a controller to refresh and naviagtion.
+
+<b>Support forward and back navigation when appropriate.</b> Web views support forward and back navigation but this behavior isn’t available by default. If people are likely to use your web view to visit multiple pages, allow forward and back navigation, and provide corresponding controls to initiate these features( look at right gif).
+
+<p float="left">
+  <img src="assets/text_view/web_view_widget.gif" alt="web view widget" width="200" />
+     <img src="assets/text_view/web_view_navigation.gif" alt="web view navigation" width="200" />
+</p>
