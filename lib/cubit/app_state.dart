@@ -3,15 +3,16 @@ part of 'app_cubit.dart';
 
 class AppState {
   final String appBarTitle;
+  final Widget appBarActions;
   AppState({
     this.appBarTitle = '',
+    this.appBarActions = const SizedBox(),
   });
 
-  AppState copyWith({
-    String? appBarTitle,
-  }) {
+  AppState copyWith({String? appBarTitle, Widget? appBarActions}) {
     return AppState(
       appBarTitle: appBarTitle ?? this.appBarTitle,
+      appBarActions: appBarActions ?? this.appBarActions,
     );
   }
 
@@ -19,9 +20,10 @@ class AppState {
   bool operator ==(covariant AppState other) {
     if (identical(this, other)) return true;
 
-    return other.appBarTitle == appBarTitle;
+    return other.appBarTitle == appBarTitle &&
+        other.appBarActions == appBarActions;
   }
 
   @override
-  int get hashCode => appBarTitle.hashCode;
+  int get hashCode => appBarTitle.hashCode ^ appBarActions.hashCode;
 }

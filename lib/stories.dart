@@ -8,6 +8,7 @@ import 'package:storybook_flutter/storybook_flutter.dart';
 import 'package:flutter_native_text_view/flutter_native_text_view.dart';
 
 import 'package:ios_human_interface/l10n/ios_human_interface_localizations.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 List<Story> get stories {
   return [
@@ -37,6 +38,13 @@ List<Story> get stories {
       builder: (context) {
         context.read<AppCubit>().updateAppbarTitle(StoriesRoutesNames.textView);
         return TextView();
+      },
+    ),
+    Story(
+      name: '${StoriesRoutesNames.content}/${StoriesRoutesNames.webView}',
+      builder: (context) {
+        context.read<AppCubit>().updateAppbarTitle(StoriesRoutesNames.webView);
+        return WebView();
       },
     ),
   ];
@@ -223,9 +231,135 @@ class TextView extends StatelessWidget {
   }
 }
 
+class WebView extends StatefulWidget {
+  const WebView({super.key});
+
+  @override
+  State<WebView> createState() => _WebViewState();
+}
+
+class _WebViewState extends State<WebView> {
+  late final WebViewController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(CupertinoColors.white)
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onProgress: (int progress) {
+            debugPrint('WebView is loading (progress : $progress%)');
+          },
+          onPageStarted: (String url) {
+            debugPrint('Page started loading: $url');
+          },
+          onPageFinished: (String url) {
+            debugPrint('Page finished loading: $url');
+            setState(() {
+              //_controller;
+              _buildNavigationActions();
+            });
+          },
+          onWebResourceError: (WebResourceError error) {
+            debugPrint('''
+              Page resource error:
+              code: ${error.errorCode}
+              description: ${error.description}
+              errorType: ${error.errorType}
+              isForMainFrame: ${error.isForMainFrame}
+          ''');
+          },
+          onNavigationRequest: (NavigationRequest request) {
+            if (request.url.startsWith('https://www.youtube.com/')) {
+              debugPrint('blocking navigation to ${request.url}');
+              return NavigationDecision.prevent;
+            }
+            debugPrint('allowing navigation to ${request.url}');
+            return NavigationDecision.navigate;
+          },
+          onUrlChange: (UrlChange change) {
+            debugPrint('url changed to ${change.url}');
+          },
+        ),
+      );
+  }
+
+  void _buildNavigationActions() async {
+    final canGoBack = await _controller.canGoBack();
+    final canGoForward = await _controller.canGoForward();
+    final actions = Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _buildNavigationButton(
+          canGoBack ? () => _controller.goBack() : null,
+          Icon(
+            CupertinoIcons.back,
+            color: !canGoBack ? CupertinoColors.inactiveGray : null,
+          ),
+        ),
+        SizedBox(
+          width: 8.0,
+        ),
+        _buildNavigationButton(
+          () => _controller.reload(),
+          Icon(
+            CupertinoIcons.refresh,
+          ),
+        ),
+        SizedBox(
+          width: 8.0,
+        ),
+        _buildNavigationButton(
+          canGoForward ? () => _controller.goForward() : null,
+          Icon(
+            CupertinoIcons.forward,
+            color: !canGoForward ? CupertinoColors.inactiveGray : null,
+          ),
+        ),
+      ],
+    );
+    context.read<AppCubit>().updateAppbarActions(actions);
+  }
+
+  Widget _buildNavigationButton(void Function()? onTap, Icon icon) {
+    return GestureDetector(
+      onTap: onTap,
+      child: SizedBox.square(
+        dimension: 48.0,
+        child: icon,
+      ),
+    );
+  }
+
+  @override
+  void deactivate() {
+    context.read<AppCubit>().updateAppbarActions(SizedBox());
+    super.deactivate();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // _buildNavigationActions();
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        CupertinoButton(
+          onPressed: () => _controller.loadRequest(
+            Uri.parse('https://flutter.dev'),
+          ),
+          child: Text('Start surfing'),
+        ),
+        Expanded(child: WebViewWidget(controller: _controller)),
+      ],
+    );
+  }
+}
+
 class StoriesRoutesNames {
   static const wellcome = 'wellcome';
   static const content = 'content';
   static const imageView = 'image-view';
   static const textView = 'text-view';
+  static const webView = 'web-view';
 }

@@ -108,9 +108,17 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                       return Text(appBarTitle);
                     },
                   ),
+                  leading: BlocSelector<AppCubit, AppState, Widget>(
+                    selector: (state) {
+                      return state.appBarActions;
+                    },
+                    builder: (context, appBarActions) => appBarActions,
+                  ),
                 ),
-                child: Center(
-                  child: child!,
+                child: SafeArea(
+                  child: Center(
+                    child: child!,
+                  ),
                 ),
               ),
               theme: theme.cupertinoThemeData,
