@@ -47,6 +47,18 @@ List<Story> get stories {
         return WebView();
       },
     ),
+    Story(
+      name:
+          '${StoriesRoutesNames.layoutOrganization}/${StoriesRoutesNames.boxes}',
+      builder: (context) {
+        context.read<AppCubit>().updateAppbarTitle(StoriesRoutesNames.boxes);
+        return BoxWidget(
+            isShowBorder:
+                context.knobs.boolean(label: 'visible border', initial: true),
+            isShowBackgroundColor: context.knobs
+                .boolean(label: 'background color', initial: true));
+      },
+    ),
   ];
 }
 
@@ -356,10 +368,52 @@ class _WebViewState extends State<WebView> {
   }
 }
 
+class BoxWidget extends StatelessWidget {
+  const BoxWidget(
+      {super.key,
+      required this.isShowBorder,
+      required this.isShowBackgroundColor});
+  final bool isShowBorder;
+  final bool isShowBackgroundColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(16.0),
+      child: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'A box title for grouping related information',
+              style: CupertinoTheme.of(context)
+                  .textTheme
+                  .textStyle
+                  .copyWith(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 8.0,
+            ),
+            Text('An align description.'),
+            Text(
+              'using padding and alignment to communicate additional grouping within a box.',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class StoriesRoutesNames {
   static const wellcome = 'wellcome';
   static const content = 'content';
   static const imageView = 'image-view';
   static const textView = 'text-view';
   static const webView = 'web-view';
+  static const layoutOrganization = 'layout-organization';
+  static const boxes = 'boxes';
 }
