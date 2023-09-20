@@ -380,6 +380,19 @@ class BoxWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.all(16.0),
+      color: isShowBackgroundColor
+          ? CupertinoColors.secondarySystemGroupedBackground
+          : Colors.transparent,
+      surfaceTintColor: Colors.transparent,
+      elevation: 0.0,
+      shape: isShowBorder
+          ? RoundedRectangleBorder(
+              side: BorderSide(
+                color: CupertinoColors.separator,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.circular(8.0))
+          : null,
       child: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(

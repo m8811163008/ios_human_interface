@@ -33,6 +33,7 @@ Text views can be any height and allow scrolling when the content extends outsid
   <img src="assets/text_view/flutter_02.png" alt="select text to search" width="200" />
      <img src="assets/text_view/flutter_03.png" alt="show browser" width="200" />
 </p>
+
 ## Web View
 A web view loads and displays rich web content, such as embedded HTML and websites, directly within the app.
 This widget has a controller to refresh and naviagtion.
@@ -43,3 +44,15 @@ This widget has a controller to refresh and naviagtion.
   <img src="assets/text_view/web_view_widget.gif" alt="web view widget" width="200" />
      <img src="assets/text_view/web_view_navigation.gif" alt="web view navigation" width="200" />
 </p>
+
+## Boxes
+A box creates a visually distinct group of logically related information and components.
+
+<p float="left">
+  <img src="assets/boxes/box_brighness_mode.gif" alt="web view widget" width="200" />
+  <img src="assets/boxes/box_border_background" alt="web view navigation" width="200" />
+</p>
+
+By default, a box uses a <b>visible border</b> or <b>background color</b> to separate its contents from the rest of the interface. A box can also include a title.
+
+<b>Consider using padding and alignment to communicate additional grouping within a box.</b> A box’s border is a distinct visual element.
